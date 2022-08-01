@@ -25,8 +25,14 @@ $contasCorrentes['123.256.789-10'] = sacar($contasCorrentes['123.256.789-10'], 5
 
 $contasCorrentes['123.456.789-11'] = depositar($contasCorrentes['123.456.789-11'],900);
 
+unset($contasCorrentes['123.256.789-10']);
+
+titularComLetrasMaiusculas($contasCorrentes['123.456.789-10']);
+
 //para cada uma das contas correntes chamando-as de conta
 foreach($contasCorrentes as $cpf => $conta){
-    //                     chave    valor
+//                     chave    valor
+    //atribuindo aos índices as variáveis
+   // list('titular' => $titular, 'saldo' => $saldo) = $conta;
    exibeMensagem("$cpf {$conta['titular']} {$conta['saldo']}");
 }

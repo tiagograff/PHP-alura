@@ -21,3 +21,7 @@ function depositar(array $conta, float $valorADepositar): array{
 function exibeMensagem(string $mensagem): void { //não retorna nada
     echo $mensagem.PHP_EOL;
 }
+
+function titularComLetrasMaiusculas(array &$conta){ //&-> a própria conta, e não uma cópia
+    $conta['titular'] = mb_strtoupper($conta['titular']);
+}

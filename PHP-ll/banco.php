@@ -25,7 +25,7 @@ $contasCorrentes['123.256.789-10'] = sacar($contasCorrentes['123.256.789-10'], 5
 
 $contasCorrentes['123.456.789-11'] = depositar($contasCorrentes['123.456.789-11'],900);
 
-unset($contasCorrentes['123.256.789-10']);
+unset($contasCorrentes['123.256.789-10']); //remove itens de uma lista
 
 titularComLetrasMaiusculas($contasCorrentes['123.456.789-10']);
 

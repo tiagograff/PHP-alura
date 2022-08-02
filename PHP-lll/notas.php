@@ -26,4 +26,3 @@ var_dump(isset($notas['ana'])); //verifica se é null
 var_dump(in_array(10, $notas)); //verifica se o valor existe
 
 echo array_search(10, $notas); //retorna a chave com o valor 10
-echo array_search(10, $notas);

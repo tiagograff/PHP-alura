@@ -9,5 +9,7 @@ $dados = [
     'idade' => 24
 ];
 
-list('nome'=> $nome, 'nota' => $nota, 'idade' => $idade) = $dados;
+//list('nome'=> $nome, 'nota' => $nota, 'idade' => $idade) = $dados;
+extract($dados); //criar variável
+compact('nome','nota','idade'); //criar um array
 var_dump($nome, $nota, $idade);

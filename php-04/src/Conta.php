@@ -2,9 +2,10 @@
 class Conta //classe -> formas | cria um novo tipo
 {
     //definir dados da conta
-    public string $cpfTitular;//atributos
-    public string $nomeTitular;
-    public float  $saldo = 0;
+    private string $cpfTitular;//atributos
+    private string $nomeTitular;
+    private float  $saldo = 0;
+    //atributos privados e metodos publicos
 
     public function sacar(float $valorASacar) //método
     {
@@ -32,5 +33,28 @@ class Conta //classe -> formas | cria um novo tipo
             $this->sacar($valorATransferir);
             $contaDestino->depositar($valorATransferir);
         }
+    }
+
+    public function defineCpfTitular(string $cpf)
+    {
+        $this->cpfTitular = $cpf;
+    }
+
+    public function defineNomeTitular(string $nome)
+    {
+        $this->nomeTitular = $nome;
+    }
+    
+    public function recuperarSaldo():float
+    {
+        return $this->saldo;
+    }
+    public function recuperarCpfTitular():float
+    {
+        return $this->cpfTitular;
+    }
+    public function recuperarNomeTitular():float
+    {
+        return $this->recuperarNomeTitular();
     }
 } 

@@ -41,3 +41,13 @@ saldo indisponível
 php > $umaConta->saldo = 0;                                                                                                                                
 php > $umaConta->depositar(200);                                                                                                                           
 php > var_dump($umaConta);
+
+php > require 'src/Conta.php';                                                                                                                             
+php > $contaUm = new Conta();                                                                                                                              
+php > $contaUm->depositar(500);                                                                                                                            
+php > $contaDois = new Conta();                                                                                                                            
+php > $contaUm->transferir(200,$contaDois);                                                                                                                
+php > echo $contaUm->saldo;                                                                                                                                
+300
+php > echo $contaDois->saldo;                                                                                                                              
+200

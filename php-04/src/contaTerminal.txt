@@ -28,3 +28,16 @@ object(Conta)#2 (3) {
   ["saldo"]=>
   float(1500)
 }
+
+//
+//
+
+php > require 'src/Conta.php';                                                                                                                             
+php > $umaConta = new Conta();                                                                                                                             
+php > $umaConta->saldo = 0;                                                                                                                                
+php > $umaConta->sacar(100);                                                                                                                               
+saldo indisponível
+
+php > $umaConta->saldo = 0;                                                                                                                                
+php > $umaConta->depositar(200);                                                                                                                           
+php > var_dump($umaConta);

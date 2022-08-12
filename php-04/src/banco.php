@@ -3,10 +3,11 @@ require_once 'Conta.php';
 
 $primeiraConta = new Conta();
 $primeiraConta->defineCpfTitular('123.456.789-10');
-$primeiraConta->defineNomeTitular('tiago pinz');
-$primeiraConta->depositar(500);
-$primeiraConta->sacar(300);
+$primeiraConta->defineNomeTitular('tiago');
 
-echo $primeiraConta->recuperarNomeTitular();
-echo $primeiraConta->recuperarCpfTitular();
-echo $primeiraConta->recuperarSaldo();
+$primeiraConta->deposita(500);
+$primeiraConta->saca(300);
+
+echo $primeiraConta->recuperaNomeTitular().PHP_EOL;
+echo $primeiraConta->recuperaCpfTitular().PHP_EOL;
+echo $primeiraConta->recuperaSaldo().PHP_EOL;

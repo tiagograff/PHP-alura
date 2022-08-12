@@ -7,7 +7,7 @@ class Conta //classe -> formas | cria um novo tipo
     private float  $saldo = 0;
     //atributos privados e metodos publicos
 
-    public function sacar(float $valorASacar) //método
+    public function saca(float $valorASacar) //método
     {
         if ($valorASacar > $this->saldo){ //dessa classe se refere ao objeto que "chamou" o método
             echo "saldo indisponível";
@@ -16,7 +16,7 @@ class Conta //classe -> formas | cria um novo tipo
         }
     }
 
-    public function depositar($valorADepositar): void 
+    public function deposita($valorADepositar): void 
     {
         if($valorADepositar < 0){
             echo "valor precisa ser positvo";
@@ -25,36 +25,38 @@ class Conta //classe -> formas | cria um novo tipo
         }
     }
 
-    public function transferir(float $valorATransferir, Conta $contaDestino): void 
+    public function transferi(float $valorATransferir, Conta $contaDestino): void 
     {
         if($valorATransferir > $this->saldo){
             echo "saldo indisponivel";
         }else{
-            $this->sacar($valorATransferir);
-            $contaDestino->depositar($valorATransferir);
+            $this->saca($valorATransferir);
+            $contaDestino->deposita($valorATransferir);
         }
     }
 
+    //getter and setter - define e recupera, por conta de estar privado
+    //getters
+    public function recuperaSaldo(): float
+    {
+     return $this->saldo;
+    } 
+    public function recuperaCpfTitular(): string
+    {
+     return $this->cpfTitular;
+    } 
+    public function recuperaNomeTitular(): string
+    {
+     return $this->nomeTitular;
+    } 
+    //setters
     public function defineCpfTitular(string $cpf)
     {
-        $this->cpfTitular = $cpf;
+     return $this->cpfTitular = $cpf;
     }
 
     public function defineNomeTitular(string $nome)
     {
-        $this->nomeTitular = $nome;
-    }
-    
-    public function recuperarSaldo():float
-    {
-        return $this->saldo;
-    }
-    public function recuperarCpfTitular():float
-    {
-        return $this->cpfTitular;
-    }
-    public function recuperarNomeTitular():float
-    {
-        return $this->recuperarNomeTitular();
+     return $this->nomeTitular = $nome;
     }
 } 

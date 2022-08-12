@@ -2,10 +2,21 @@
 class Conta //classe -> formas | cria um novo tipo
 {
     //definir dados da conta
-    private string $cpfTitular;//atributos
+    private string $cpfTitular;//atributos dos objetos
     private string $nomeTitular;
-    private float  $saldo = 0;
+    private float  $saldo;
+    private static $numeroDeContas;//atributo da conta
     //atributos privados e metodos publicos
+
+    public function __construct(string $cpfTitular, string $nomeTitular) //metodo construtor, sempre que eu criar uma nova conta ele sera chamado
+    {
+        $this->cpfTitular  = $cpfTitular;//parametros
+        $this->validaNomeTitular($nomeTitular);
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+
+        Conta::$numeroDeContas++;
+    }
 
     public function saca(float $valorASacar) //método
     {
@@ -49,14 +60,28 @@ class Conta //classe -> formas | cria um novo tipo
     {
      return $this->nomeTitular;
     } 
-    //setters
-    public function defineCpfTitular(string $cpf)
+    public static function recuperaNumeroDeContas()
     {
-     return $this->cpfTitular = $cpf;
+        return Conta::$numeroDeContas;
     }
+    // //setters NAO PRECISA MAIS POR CAUSA DO METODO CONSTRUTOR
+    // public function defineCpfTitular(string $cpf)
+    // {
+    //  return $this->cpfTitular = $cpf;
+    // }
 
-    public function defineNomeTitular(string $nome)
+    // public function defineNomeTitular(string $nome)
+    // {
+    //  return $this->nomeTitular = $nome;
+    // }
+
+    //código executado apenas dentro da classe
+    private function validaNomeTitular($nomeTitular)
     {
-     return $this->nomeTitular = $nome;
+        if(strlen($nomeTitular)<5)//strlen -> tamanho da string 
+        {
+            echo "nome precisa ter mais que 5 caracteres";
+            exit();
+        } 
     }
 } 

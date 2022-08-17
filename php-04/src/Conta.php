@@ -2,20 +2,16 @@
 class Conta //classe -> formas | cria um novo tipo
 {
     //definir dados da conta
-    private string $cpfTitular;//atributos dos objetos
-    private string $nomeTitular;
+    private Titular $titular; //atributos dos objetos
     private float  $saldo;
     private static $numeroDeContas = 0;//atributo da conta
 
     //atributos privados e metodos publicos
 
-    public function __construct(string $cpfTitular, string $nomeTitular) //metodo construtor, sempre que eu criar uma nova conta ele sera chamado
+    public function __construct(Titular $titular) //metodo construtor, sempre que eu criar uma nova conta ele sera chamado
     {
-        $this->cpfTitular  = $cpfTitular;//parametros
-        $this->validaNomeTitular($nomeTitular); //chamando a função
-        $this->nomeTitular = $nomeTitular;
+        $this->titular = $titular;
         $this->saldo = 0;
-
         self::$numeroDeContas++; //self = classe Conta
     }
 
@@ -57,18 +53,19 @@ class Conta //classe -> formas | cria um novo tipo
     public function recuperaSaldo(): float
     {
      return $this->saldo;
-    } 
-    public function recuperaCpfTitular(): string
-    {
-     return $this->cpfTitular;
-    } 
-    public function recuperaNomeTitular(): string
-    {
-     return $this->nomeTitular;
-    } 
+    }
     public static function recuperaNumeroDeContas(): int
     {
         return self::$numeroDeContas;
+    }
+
+    public function recuperaNomeTitular(): string
+    {
+        return $this->titular->recuperaNome();
+    }
+    public function recuperaCpfTitular()
+    {
+        return $this->titular->recuperaCpf();
     }
     // //setters NAO PRECISA MAIS POR CAUSA DO METODO CONSTRUTOR
     // public function defineCpfTitular(string $cpf)
@@ -82,12 +79,4 @@ class Conta //classe -> formas | cria um novo tipo
     // }
 
     //código executado apenas dentro da classe
-    private function validaNomeTitular($nomeTitular)
-    {
-        if(strlen($nomeTitular)<5)//strlen -> tamanho da string 
-        {
-            echo "nome precisa ter mais que 5 caracteres";
-            exit();
-        } 
-    }
 } 

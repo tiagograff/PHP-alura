@@ -5,17 +5,23 @@ class Conta //classe -> formas | cria um novo tipo
     private string $cpfTitular;//atributos dos objetos
     private string $nomeTitular;
     private float  $saldo;
-    private static $numeroDeContas;//atributo da conta
+    private static $numeroDeContas = 0;//atributo da conta
+
     //atributos privados e metodos publicos
 
     public function __construct(string $cpfTitular, string $nomeTitular) //metodo construtor, sempre que eu criar uma nova conta ele sera chamado
     {
         $this->cpfTitular  = $cpfTitular;//parametros
-        $this->validaNomeTitular($nomeTitular);
+        $this->validaNomeTitular($nomeTitular); //chamando a função
         $this->nomeTitular = $nomeTitular;
         $this->saldo = 0;
 
-        Conta::$numeroDeContas++;
+        self::$numeroDeContas++; //self = classe Conta
+    }
+
+    public function __destruct()
+    {
+        self::$numeroDeContas--;
     }
 
     public function saca(float $valorASacar) //método
@@ -60,9 +66,9 @@ class Conta //classe -> formas | cria um novo tipo
     {
      return $this->nomeTitular;
     } 
-    public static function recuperaNumeroDeContas()
+    public static function recuperaNumeroDeContas(): int
     {
-        return Conta::$numeroDeContas;
+        return self::$numeroDeContas;
     }
     // //setters NAO PRECISA MAIS POR CAUSA DO METODO CONSTRUTOR
     // public function defineCpfTitular(string $cpf)

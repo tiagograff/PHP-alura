@@ -10,10 +10,9 @@ echo $primeiraConta->recuperaNomeTitular().PHP_EOL;
 echo $primeiraConta->recuperaCpfTitular().PHP_EOL;
 echo $primeiraConta->recuperaSaldo().PHP_EOL;
 
-$segundaConta = new Conta('987.654.321-98','ana');
+$segundaConta = new Conta('698.549.548-10', 'patricia');
+var_dump($segundaConta);
 
-echo $segundaConta->recuperaNomeTitular().PHP_EOL;
-echo $segundaConta->recuperaCpfTitular().PHP_EOL;
-echo $segundaConta->recuperaSaldo().PHP_EOL;
-
+$outra = new Conta('123', 'abcdefg');
+unset($segundaConta);
 echo Conta::recuperaNumeroDeContas();

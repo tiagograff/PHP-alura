@@ -1,4 +1,7 @@
 <?php
+
+namespace Alura\Banco\Modelo\Conta;
+
 class Conta //classe -> formas | cria um novo tipo
 {
     //definir dados da conta

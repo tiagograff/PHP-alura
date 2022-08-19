@@ -25,10 +25,11 @@ class Conta //classe -> formas | cria um novo tipo
 
     public function saca(float $valorASacar) //método
     {
-        if ($valorASacar > $this->saldo){ //dessa classe se refere ao objeto que "chamou" o método
+        $valorSaque = $valorASacar * 0.05;
+        if ($valorSaque > $this->saldo){ //dessa classe se refere ao objeto que "chamou" o método
             echo "saldo indisponível";
         }else{
-            $this->saldo -= $valorASacar;
+            $this->saldo -= $valorSaque;
         }
     }
 

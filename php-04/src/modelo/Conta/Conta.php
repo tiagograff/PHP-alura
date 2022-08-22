@@ -2,11 +2,11 @@
 
 namespace Alura\Banco\Modelo\Conta;
 
-class Conta //classe -> formas | cria um novo tipo
+abstract class Conta //classe -> formas | cria um novo tipo
 {
     //definir dados da conta
     private Titular $titular; //atributos dos objetos
-    private float  $saldo;
+    protected float $saldo;
     private static $numeroDeContas = 0;//atributo da conta
 
     //atributos privados e metodos publicos
@@ -24,13 +24,17 @@ class Conta //classe -> formas | cria um novo tipo
     }
 
     public function saca(float $valorASacar) //método
-    {
-        $valorSaque = $valorASacar * 0.05;
-        if ($valorSaque > $this->saldo){ //dessa classe se refere ao objeto que "chamou" o método
-            echo "saldo indisponível";
-        }else{
-            $this->saldo -= $valorSaque;
+    { 
+        $tarifaDeSaque = $valorASacar * $this->percentualTarifa(); //método
+        
+        $valorSaque = $valorASacar + $tarifaDeSaque;
+        if ($valorSaque > $this->saldo){
+            echo "saldo indisponivel";
+            return;
         }
+
+        $this->saldo -= $valorSaque;
+        
     }
 
     public function deposita($valorADepositar): void 
@@ -42,15 +46,7 @@ class Conta //classe -> formas | cria um novo tipo
         }
     }
 
-    public function transferi(float $valorATransferir, Conta $contaDestino): void 
-    {
-        if($valorATransferir > $this->saldo){
-            echo "saldo indisponivel";
-        }else{
-            $this->saca($valorATransferir);
-            $contaDestino->deposita($valorATransferir);
-        }
-    }
+    abstract protected function percentualTarifa(): float; //todas que extenderem contas devem ter este método
 
     //getter and setter - define e recupera, por conta de estar privado
     //getters

@@ -3,26 +3,16 @@
 require_once 'autoload.php';
 
 use Alura\Banco\Modelo\{Cpf};
-use Alura\Banco\Modelo\Funcionario\{Gerente, Funcionario};
+use Alura\Banco\Modelo\Funcionario\{Gerente, Funcionario, Diretor, Desenvolvedor};
 use Alura\Banco\Servico\ControladorDeBonificacoes;
 
-$umFuncionario = new Funcionario(
-    'Vinicius Dias',
-    new CPF('123.456.789-10'),
-    'Desenvolvedor',
-    1000
-);
-
-$umaFuncionaria = new Gerente(
-    'Patricia',
-    new CPF('987.654.321-10'),
-    'Gerente',
-    3000
-);
-
+$umFuncionario = new Desenvolvedor('teste',new CPF('000.000.000-00'),'Funcionario',3000);
+$doisFuncionario = new Gerente('teste2',new Cpf('111.111.111-11'),'Gerente',1000);
+$tresFuncionario = new Diretor('teste2',new Cpf('111.111.111-11'),'Diretor',2000);
 
 $controlador = new ControladorDeBonificacoes();
 $controlador->adicionaBonificacoes($umFuncionario);
-$controlador->adicionaBonificacoes($umaFuncionaria);
+$controlador->adicionaBonificacoes($doisFuncionario);
+$controlador->adicionaBonificacoes($tresFuncionario);
 
 echo $controlador->recuperaTotalBonificacoes();

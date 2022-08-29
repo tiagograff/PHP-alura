@@ -5,7 +5,7 @@ namespace Alura\Banco\Modelo\Funcionario;
 use Alura\Banco\Modelo\Pessoa;
 use Alura\Banco\Modelo\Cpf;
 
- class Funcionario extends Pessoa
+ abstract class Funcionario extends Pessoa
  {
     private string $cargo;
     private float $salario;

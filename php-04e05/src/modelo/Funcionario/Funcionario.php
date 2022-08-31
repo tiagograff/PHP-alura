@@ -33,5 +33,15 @@ use Alura\Banco\Modelo\Cpf;
         return $this->salario * 0.1;
     }
 
+    public function recebeAumento(float $valorAumento)
+    {
+        if ($valorAumento < 0)
+        {
+            echo "aumento deve ser positivo";
+            return;
+        }
+        $this->salario += $valorAumento;
+    }
+
 }
 

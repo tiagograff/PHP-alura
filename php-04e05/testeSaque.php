@@ -14,7 +14,9 @@ $conta = new ContaCorrente(
 );
 
 $conta->deposita(500);
+
 $conta->saca(100);
+
 echo $conta->recuperaSaldo().PHP_EOL;
 
 $conta2 = new ContaPoupanca(
